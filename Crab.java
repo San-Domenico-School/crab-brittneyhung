@@ -1,39 +1,72 @@
-import greenfoot.*;
+import greenfoot.*;  
 
 /**
- * This class defines a crab. Crabs live on the beach.
- * @author BGustin
- * @version 6/1/2022 5:48am
+ * This class defines a Crab. The crab eats worms, and avoids the lobster.
+ * @author BrittneyHung
+ * @version 10/7/2024 12:15pm
  */
 public class Crab extends Actor
 {
+    private int speed = 3;   
+    private int turnSpeed = 5;  
 
-    /**
-     * The act method is called by Greenfoot each frame about 68 times per second 
-     * whenever the 'Run' button gets pressed in the Action window.
-     */
     public void act()
     {
-        move(3);  
-        checkKeys();  
+        moveCrab();     
+        checkForCollision(); 
+        turnAtEdge();   
     }
-    
-    /**
-     * Check for arrow key presses and move the crab accordingly.
-     */
-    private void checkKeys()
+
+    private void moveCrab() 
     {
-        if (Greenfoot.isKeyDown("left")) {
-            setRotation(180); 
+        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) 
+        {
+            move(speed); 
         }
-        if (Greenfoot.isKeyDown("right")) {
-            setRotation(0); 
+
+        if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) 
+        {
+            move(-speed);
         }
-        if (Greenfoot.isKeyDown("up")) {
-            setRotation(270); 
+
+        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) 
+        {
+            turn(-turnSpeed);
         }
-        if (Greenfoot.isKeyDown("down")) {
-            setRotation(90); 
+
+        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) 
+        {
+            turn(turnSpeed);
+        }
+    }
+
+    private void turnAtEdge()
+    {
+        if (isAtEdge()) {
+            turn(17);  
+        }
+    }
+
+    private void checkForCollision() 
+    {
+        if (isTouching(Lobster.class)) 
+        {
+            Greenfoot.playSound("au.wav");  
+            Greenfoot.stop();               
+            getWorld().showText("You Lose!", getWorld().getWidth() / 2, getWorld().getHeight() / 2); 
+        }
+
+        if (isTouching(Worm.class)) 
+        {
+            removeTouching(Worm.class);     
+            Greenfoot.playSound("slurp.wav");  
+
+            if (getWorld().getObjects(Worm.class).isEmpty()) 
+            {
+                Greenfoot.playSound("fanfare.wav");  
+                Greenfoot.stop();                    
+                getWorld().showText("You Won!", getWorld().getWidth() / 2, getWorld().getHeight() / 2);  
+            }
         }
     }
 }

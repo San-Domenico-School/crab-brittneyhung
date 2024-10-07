@@ -1,20 +1,16 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
+/**
+ * This class defines a Worm. Worms are food for crab.
+ * @author BrittneyHung
+ * @version 10/7/2024 12:15pm
+ */
 
 public class Worm extends Actor
 {
+    /**
+     * Worms don't move.
+     */
     public void act()
     {
-        move(2);      
-        turnAtEdge(); 
-    }
-
-    /**
-     * Turn the Worm when it reaches the edge of the screen.
-     */
-    public void turnAtEdge()
-    {
-        if (isAtEdge()) {
-            turn(Greenfoot.getRandomNumber(90) - 45);  
-        }
     }
 }

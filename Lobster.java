@@ -1,35 +1,47 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
+/**
+ * The Lobster class chases the crab.
+ * @author BrittneyHung
+ * @version 10/7/2024 12:15pm
+ */
 public class Lobster extends Actor
 {
-    private int speed = 5;
+    private int speed = 2;
+
     public void act()
     {
-        move(speed);     
-        turnAtEdge(); 
-        lookForCrab(); 
+        chaseCrab();
+        turnAtEdge();
+        checkForCollision();
     }
 
-    /**
-     * Turn the Lobster when it reaches the edge of the screen.
-     */
-    public void turnAtEdge()
+    private void chaseCrab()
+    {
+        Crab crab = (Crab) getWorld().getObjects(Crab.class).get(0);
+        
+        if (crab != null) {
+            turnTowards(crab.getX(), crab.getY());
+        }
+
+        move(speed);
+    }
+
+    private void turnAtEdge()
     {
         if (isAtEdge()) {
-            turn(5);  
+            turn(17);
         }
     }
 
-    /**
-     * Check if the Lobster touches the Crab, if so, end the game.
-     */
-    public void lookForCrab()
+    private void checkForCollision() 
     {
-        if (isTouching(Crab.class)) {
-            Greenfoot.playSound("au.wav");  
-            Greenfoot.stop();  
-            getWorld().showText("You Lost!", getWorld().getWidth() / 2, getWorld().getHeight() / 2); 
+        if (isTouching(Crab.class)) 
+        {
+            removeTouching(Crab.class);
+            Greenfoot.playSound("au.wav");
+            Greenfoot.stop();
+            getWorld().showText("You Lose!", getWorld().getWidth() / 2, getWorld().getHeight() / 2);
         }
     }
-    
 }
