@@ -3,12 +3,12 @@ import greenfoot.*;
 /**
  * This class defines a Crab. The crab eats worms, and avoids the lobster.
  * @author BrittneyHung
- * @version 10/7/2024 12:15pm
+ * @version 10/7/2024 12:17pm
  */
 public class Crab extends Actor
 {
     private int speed = 3;   
-    private int turnSpeed = 5;  
+    private int turnSpeed = 5;   
 
     public void act()
     {

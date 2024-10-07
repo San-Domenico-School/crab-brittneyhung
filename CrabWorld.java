@@ -2,14 +2,14 @@ import greenfoot.*;
 /**
  * This class defines a CrabWorld. 
  * @author BrittneyHung
- * @version 10/7/2024 12:15pm
+ * @version 10/7/2024 12:17pm
  */
 public class CrabWorld extends World
 {
     /**
      * Create the crab world (the beach). Our world has a size 
      * of 560x560 cells, where every cell is just 1 pixel.
-     */
+     */ 
     
     public CrabWorld() 
     {

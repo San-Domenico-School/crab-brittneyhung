@@ -3,11 +3,11 @@ import greenfoot.*;
 /**
  * The Lobster class chases the crab.
  * @author BrittneyHung
- * @version 10/7/2024 12:15pm
+ * @version 10/7/2024 12:17pm
  */
 public class Lobster extends Actor
 {
-    private int speed = 2;
+    private int speed = 1;
 
     public void act()
     {
