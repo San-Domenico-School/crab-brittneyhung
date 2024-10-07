@@ -1,5 +1,6 @@
 import greenfoot.*;  
 /**
+ * This class defines a CrabWorld. 
  * @author BrittneyHung
  * @version 10/7/2024 12:15pm
  */
